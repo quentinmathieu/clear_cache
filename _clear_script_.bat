@@ -14,6 +14,10 @@ RD /S /Q "%LocalAppData%\Packages\Microsoft.MicrosoftEdge_8wekyb3d8bbwe\AC\#!001
 RD /S /Q "%LocalAppData%\Packages\Microsoft.MicrosoftEdge_8wekyb3d8bbwe\AC\#!002\INetCookies"
 RD /S /Q "%LocalAppData%\Packages\Microsoft.MicrosoftEdge_8wekyb3d8bbwe\AC\#!002\MicrosoftEdge\Cookies"
 RD /S /Q "%LocalAppData%\Packages\Microsoft.MicrosoftEdge_8wekyb3d8bbwe\AC\#!002\MicrosoftEdge\User\Default\DOMStore"
+
+del "%USERPROFILE%\AppData\Local\Packages\Microsoft.MicrosoftEdge_8wekyb3d8bbwe\AC" /s /f /q /a
+
+
 :: Parse the Local AppData sub path
 call :Expand xAppData "%%LocalAppData:%UserProfile%=%%"
 
@@ -71,6 +75,7 @@ findstr.exe Target "%TEMP%\List.txt" > "%TEMP%\tokensonly.txt"
 FOR /F "tokens=1,2 delims= " %%G IN (%TEMP%\tokensonly.txt) DO cmdkey.exe /delete:%%H
 del "%TEMP%\List.txt" /s /f /q
 del "%TEMP%\tokensonly.txt" /s /f /q
+
 echo:
 echo ----------------------------------------------------
 echo:
