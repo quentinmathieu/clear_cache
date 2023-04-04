@@ -1,7 +1,7 @@
 @echo off
 
 echo Avez vous pense a bien verifier votre dernier commit ?
-pause
+
 
 taskkill /F /IM msedge.exe
 
@@ -71,12 +71,13 @@ echo:
 
 echo Delete All Credentials
 cmdkey /delete:git:https://github.com
+cmdkey /delete:vscodevscode.github-authentication/github.auth
 
 echo:
 echo ----------------------------------------------------
 echo:
 
-pause
+
 echo Delete .gitconfig in %USERPROFILE%
 del %userprofile%\.gitconfig
 
