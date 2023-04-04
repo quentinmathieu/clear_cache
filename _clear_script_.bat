@@ -70,8 +70,7 @@ echo ----------------------------------------------------
 echo:
 
 echo Delete All Credentials
-FOR /F "tokens=2 delims==" %%H IN ('cmdkey /list ^| findstr /I "target"') DO /delelte:%%~H
-
+cmdkey /delete:git:https://github.com
 
 echo:
 echo ----------------------------------------------------
