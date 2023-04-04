@@ -70,16 +70,14 @@ echo ----------------------------------------------------
 echo:
 
 echo Delete All Credentials
-cmdkey.exe /list > "%TEMP%\List.txt"
-findstr.exe Target "%TEMP%\List.txt" > "%TEMP%\tokensonly.txt"
-FOR /F "tokens=1,2 delims= " %%G IN (%TEMP%\tokensonly.txt) DO cmdkey.exe /delete:%%H
-del "%TEMP%\List.txt" /s /f /q
-del "%TEMP%\tokensonly.txt" /s /f /q
+FOR /F "tokens=2 delims==" %%H IN ('cmdkey /list ^| findstr /I "target"') DO /delelte:%%~H
+
 
 echo:
 echo ----------------------------------------------------
 echo:
 
+pause
 echo Delete .gitconfig in %USERPROFILE%
 del %userprofile%\.gitconfig
 
@@ -88,6 +86,7 @@ echo ----------------------------------------------------
 echo:
 
 echo Delete All files in laragon/www
-Xcopy C:\laragon\www\test %USERPROFILE%\Downloads\trash /E /H /C /I /Y
+Xcopy C:\laragon\www %USERPROFILE%\Downloads\trash /E /H /C /I /Y
 
-del /f /s /q "C:\laragon\www\test" 1>nul
+del /f /s /q "C:\laragon\www" 1>nul
+
