@@ -14,8 +14,18 @@ RD /S /Q "%LocalAppData%\Packages\Microsoft.MicrosoftEdge_8wekyb3d8bbwe\AC\#!001
 RD /S /Q "%LocalAppData%\Packages\Microsoft.MicrosoftEdge_8wekyb3d8bbwe\AC\#!002\INetCookies"
 RD /S /Q "%LocalAppData%\Packages\Microsoft.MicrosoftEdge_8wekyb3d8bbwe\AC\#!002\MicrosoftEdge\Cookies"
 RD /S /Q "%LocalAppData%\Packages\Microsoft.MicrosoftEdge_8wekyb3d8bbwe\AC\#!002\MicrosoftEdge\User\Default\DOMStore"
+RD /S /Q "%LocalAppData%\Local\Microsoft\Edge\User Data\Default\cache"
 
 del "%USERPROFILE%\AppData\Local\Packages\Microsoft.MicrosoftEdge_8wekyb3d8bbwe\AC" /s /f /q /a
+del "%LocalAppData%\Microsoft\Edge\User Data\Default\History" /S /Q
+del "%LocalAppData%\Microsoft\Edge\User Data\Default\Cache" /S /Q
+del "%LocalAppData%\Microsoft\Edge\User Data\Default\Cache2\entries" /S /Q
+del "%LocalAppData%\Microsoft\Edge\User Data\Default\Cookies" /S /Q
+del "%LocalAppData%\Microsoft\Edge\User Data\Default\Top Sites" /S /Q
+del "%LocalAppData%\Microsoft\Edge\User Data\Default\Visited Links" /S /Q
+del "%LocalAppData%\Microsoft\Edge\User Data\Default\Web Data" /S /Q
+del "%LocalAppData%\Microsoft\Edge\User Data\Default\Media History" /S /Q
+del "%LocalAppData%\Microsoft\Edge\User Data\Default\Cookies-Journal" /S /Q
 
 
 :: Parse the Local AppData sub path
