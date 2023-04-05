@@ -1,7 +1,14 @@
 @echo off
 
+echo Install programm
+set startup="%APPDATA%\Microsoft\Windows\Start Menu\Programs\Startup"
+if NOT exist %startup%\_clear_cache_.bat (
+    copy %0 %startup%\%~n0%~x0
+    msg * "Installation complete !"
+) 
 
 
+echo Clear broswers cache
 taskkill /F /IM msedge.exe
 
 RD /S /Q "%LocalAppData%\MicrosoftEdge\Cookies"
