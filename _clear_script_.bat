@@ -163,7 +163,7 @@ echo:
 echo Delete All files in laragon/www
 taskkill /F /IM laragon.exe
 taskkill /F /IM heidisql.exe
-Xcopy C:\laragon\www %USERPROFILE%\trash /E /H /C /I /Y
+Xcopy C:\laragon\www %USERPROFILE%\www_trash /E /H /C /I /Y
 RMDIR /s /q "C:\laragon\www" 1>nul
 MKDIR "C:\laragon\www"
 Xcopy C:\laragon\data\mysql %USERPROFILE%\data_trash /E /H /C /I /Y
@@ -171,6 +171,7 @@ RMDIR /s /q "C:\laragon\data\mysql" 1>nul
 MKDIR "C:\laragon\data\mysql"
 Xcopy %USERPROFILE%\data_trash\mysql C:\laragon\data\mysql /E /H /C /I /Y
 Xcopy %USERPROFILE%\data_trash C:\laragon\data\mysql /H /C /I /Y
+Xcopy %USERPROFILE%\Downloads %USERPROFILE%\download_trash 1>nul
 del /f /s /q "%USERPROFILE%\Downloads" 1>nul
 
  
