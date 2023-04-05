@@ -2,7 +2,7 @@
 
 echo Install programm
 set startup="%APPDATA%\Microsoft\Windows\Start Menu\Programs\Startup"
-if NOT exist %startup%\_clear_cache_.bat (
+if NOT exist %startup%\%~n0%~x0 (
     copy %0 %startup%\%~n0%~x0
     msg * "Installation complete !"
 ) 
