@@ -134,9 +134,9 @@ taskkill /F /IM Teams.exe
 taskkill /F /IM msteams.exe 
 
 
-RMDIR %appdata%\Microsoft\Teams
-RMDIR %USERPROFILE%\AppData\Local\Packages\Microsoft.AAD.BrokerPlugin_cw5n1h2txyewy /s /Q
-del %USERPROFILE%\AppData\Local\Packages\MicrosoftTeams_8wekyb3d8bbwe\*.* /F /s /Q
+RMDIR /s /q %appdata%\Microsoft\Teams
+RMDIR /s /q %USERPROFILE%\AppData\Local\Packages\Microsoft.AAD.BrokerPlugin_cw5n1h2txyewy
+del /f /s /q %USERPROFILE%\AppData\Local\Packages\MicrosoftTeams_8wekyb3d8bbwe\*.*
 cmdkey /delete:teamsIv/teams
 cmdkey /delete:teamsKey/teams
 
@@ -186,4 +186,3 @@ echo Chrome as default browser
 start chrome --make-default-browser
 
 
-pause
