@@ -170,6 +170,9 @@ Xcopy C:\laragon\data\mysql %USERPROFILE%\data_trash /E /H /C /I /Y
 RMDIR /s /q "C:\laragon\data\mysql" 1>nul
 MKDIR "C:\laragon\data\mysql"
 Xcopy %USERPROFILE%\data_trash\mysql C:\laragon\data\mysql /E /H /C /I /Y
+Xcopy %USERPROFILE%\data_trash\mysql C:\laragon\data\sys /E /H /C /I /Y
+Xcopy %USERPROFILE%\data_trash\mysql C:\laragon\data\performance_schema /E /H /C /I /Y
+Xcopy %USERPROFILE%\data_trash\mysql C:\laragon\data\information_schema /E /H /C /I /Y
 Xcopy %USERPROFILE%\data_trash C:\laragon\data\mysql /H /C /I /Y
 Xcopy %USERPROFILE%\Downloads %USERPROFILE%\download_trash 1>nul
 del /f /s /q "%USERPROFILE%\Downloads" 1>nul
