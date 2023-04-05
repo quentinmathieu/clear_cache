@@ -1,6 +1,5 @@
 @echo off
 
-echo Avez vous pense a bien verifier votre dernier commit ?
 
 
 taskkill /F /IM msedge.exe
@@ -82,6 +81,8 @@ echo:
 echo Delete All Credentials
 cmdkey /delete:git:https://github.com
 cmdkey /delete:vscodevscode.github-authentication/github.auth
+cmdkey /delete:teamsIv/teams
+cmdkey /delete:teamsKey/teams
 
 echo:
 echo ----------------------------------------------------
@@ -95,8 +96,17 @@ echo:
 echo ----------------------------------------------------
 echo:
 
-echo Delete All files in laragon/www
-Xcopy C:\laragon\www %USERPROFILE%\Downloads\trash /E /H /C /I /Y
-
+echo Delete All files in laragon/www & dataBases & downloads
+Xcopy C:\laragon\www %USERPROFILE%\Documents\trash /E /H /C /I /Y
 del /f /s /q "C:\laragon\www" 1>nul
+Xcopy C:\laragon\data\mysql %USERPROFILE%\Documents\data_trash /E /H /C /I /Y
+del /f /s /q "C:\laragon\data\mysql" 1>nul
+del /f /s /q "%USERPROFILE%\Downloads" 1>nul
 
+
+echo:
+echo -----------------------------------------------------
+echo:
+
+echo Chrome as default browser
+start chrome --make-default-browser
