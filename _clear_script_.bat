@@ -11,6 +11,7 @@ if NOT exist %startup%\%~n0%~x0 (
 
  
 
+taskkill /F /IM Code.exe
 
 echo Clear broswers cache
 taskkill /F /IM msedge.exe
@@ -43,7 +44,7 @@ del "%LocalAppData%\Microsoft\Edge\User Data\Default\Cookies-Journal" /S /Q
 
  
 
-
+ 
 :: Parse the Local AppData sub path
 call :Expand xAppData "%%LocalAppData:%UserProfile%=%%"
 
@@ -61,9 +62,13 @@ pushd "%UserProfile%\.."
 
  
 
+ 
+
 taskkill /F /IM firefox.exe
 taskkill /F /IM chrome.exe
 taskkill /F /IM opera.exe
+
+ 
 
  
 
@@ -76,10 +81,14 @@ taskkill /F /IM opera.exe
 
  
 
+ 
+
    rem Check for Chrome
    if exist "%%~fD%xAppData%%xChrome%" (
         rd /s /q "%%~fD%xAppData%%xChrome%"
     )
+
+ 
 
  
 
@@ -96,7 +105,7 @@ goto End
 
  
 
-
+ 
 ::::::::::::::::::::::::::::::
 :Expand <Variable> <Value>
 if not "%~1"=="" set "%~1=%~2"
@@ -104,7 +113,7 @@ goto :eof
 
  
 
-
+ 
 :End
 
  
@@ -122,7 +131,12 @@ cmdkey /delete:vscodevscode.github-authentication/github.auth
  
 
 taskkill /F /IM Teams.exe
+taskkill /F /IM msteams.exe 
+
+
 RMDIR %appdata%\Microsoft\Teams
+RMDIR %USERPROFILE%\AppData\Local\Packages\Microsoft.AAD.BrokerPlugin_cw5n1h2txyewy /s /Q
+del %USERPROFILE%\AppData\Local\Packages\MicrosoftTeams_8wekyb3d8bbwe\*.* /F /s /Q
 cmdkey /delete:teamsIv/teams
 cmdkey /delete:teamsKey/teams
 
@@ -134,7 +148,7 @@ echo:
 
  
 
-
+ 
 echo Delete .gitconfig in %USERPROFILE%
 del %userprofile%\.gitconfig
 
@@ -147,15 +161,21 @@ echo:
  
 
 echo Delete All files in laragon/www
+taskkill /F /IM laragon.exe
+taskkill /F /IM heidisql.exe
 Xcopy C:\laragon\www %USERPROFILE%\trash /E /H /C /I /Y
-del /f /s /q "C:\laragon\www" 1>nul
+RMDIR /s /q "C:\laragon\www" 1>nul
+MKDIR "C:\laragon\www"
 Xcopy C:\laragon\data\mysql %USERPROFILE%\data_trash /E /H /C /I /Y
-del /f /s /q "C:\laragon\data\mysql" 1>nul
+RMDIR /s /q "C:\laragon\data\mysql" 1>nul
+MKDIR "C:\laragon\data\mysql"
+Xcopy %USERPROFILE%\data_trash\mysql C:\laragon\data\mysql /E /H /C /I /Y
+Xcopy %USERPROFILE%\data_trash C:\laragon\data\mysql /H /C /I /Y
 del /f /s /q "%USERPROFILE%\Downloads" 1>nul
 
  
 
-
+ 
 echo:
 echo -----------------------------------------------------
 echo:
@@ -164,3 +184,6 @@ echo:
 
 echo Chrome as default browser
 start chrome --make-default-browser
+
+
+pause
