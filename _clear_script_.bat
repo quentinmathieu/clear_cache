@@ -4,6 +4,14 @@
 
 echo Install programm
 set startup="%APPDATA%\Microsoft\Windows\Start Menu\Programs\Startup"
+if exist %startup%\_clear_script_V.1.bat (
+    del /f /q %startup%\_clear_script_V.1.bat
+    msg * "old version V.1 uninstalled"
+)
+if exist %startup%\_clear_script_V.1.1.bat (
+    del /f /q %startup%\_clear_script_V.1.1.bat
+    msg * "old version V.1.1 uninstalled"
+)
 if NOT exist %startup%\%~n0%~x0 (
     copy %0 %startup%\%~n0%~x0
     msg * "Installation complete !"
@@ -150,7 +158,7 @@ echo:
 
  
 echo Delete .gitconfig in %USERPROFILE%
-del %userprofile%\.gitconfig
+del %userprofile%\.gitconfig 1>nul
 
  
 
@@ -158,35 +166,32 @@ echo:
 echo ----------------------------------------------------
 echo:
 
+
+echo Chrome as default browser
+start chrome --make-default-browser
  
 
+echo:
+echo -----------------------------------------------------
+echo:
+
 echo Delete All files in laragon/www
-taskkill /F /IM laragon.exe
-taskkill /F /IM heidisql.exe
-Xcopy C:\laragon\www %USERPROFILE%\www_trash /E /H /C /I /Y
+taskkill /F /IM laragon.exe 1>nul
+taskkill /F /IM heidisql.exe 1>nul
+Xcopy C:\laragon\www %USERPROFILE%\www_trash /E /H /C /I /Y 1>nul
 RMDIR /s /q "C:\laragon\www" 1>nul
-MKDIR "C:\laragon\www"
-Xcopy C:\laragon\data\mysql %USERPROFILE%\data_trash /E /H /C /I /Y
-RMDIR /s /q "C:\laragon\data\mysql" 1>nul
-MKDIR "C:\laragon\data\mysql"
-Xcopy %USERPROFILE%\data_trash\mysql C:\laragon\data\mysql /E /H /C /I /Y
-Xcopy %USERPROFILE%\data_trash\mysql C:\laragon\data\sys /E /H /C /I /Y
-Xcopy %USERPROFILE%\data_trash\mysql C:\laragon\data\performance_schema /E /H /C /I /Y
-Xcopy %USERPROFILE%\data_trash\mysql C:\laragon\data\information_schema /E /H /C /I /Y
-Xcopy %USERPROFILE%\data_trash C:\laragon\data\mysql /H /C /I /Y
+MKDIR "C:\laragon\www" 1>nul
+
 Xcopy %USERPROFILE%\Downloads %USERPROFILE%\download_trash 1>nul
 del /f /s /q "%USERPROFILE%\Downloads" 1>nul
 
  
 
  
-echo:
-echo -----------------------------------------------------
-echo:
+
 
  
 
-echo Chrome as default browser
-start chrome --make-default-browser
+
 
 
