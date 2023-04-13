@@ -158,7 +158,7 @@ echo:
 
  
 echo Delete .gitconfig in %USERPROFILE%
-del %userprofile%\.gitconfig 1>nul
+del /q /f %userprofile%\.gitconfig 1>nul
 
  
 
@@ -176,10 +176,8 @@ echo -----------------------------------------------------
 echo:
 
 echo Delete All files in laragon/www
-taskkill /F /IM laragon.exe 1>nul
-taskkill /F /IM heidisql.exe 1>nul
 Xcopy C:\laragon\www %USERPROFILE%\www_trash /E /H /C /I /Y 1>nul
-RMDIR /s /q "C:\laragon\www" 1>nul
+RMDIR /s /q /f "C:\laragon\www" 1>nul
 MKDIR "C:\laragon\www" 1>nul
 
 Xcopy %USERPROFILE%\Downloads %USERPROFILE%\download_trash 1>nul
