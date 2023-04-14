@@ -1,5 +1,5 @@
 @echo off
-if not DEFINED IS_MINIMIZED set IS_MINIMIZED=1 && start "" /min "%~dpnx0" %* && exit
+if not DEFINED IS_MINIMIZED set IS_MINIMIZED=1 && cmd /c start "" /min "%~dpnx0" %* && exit
 
  
 
@@ -192,8 +192,7 @@ MKDIR "C:\laragon\www" 1>nul
 Xcopy %USERPROFILE%\Downloads %USERPROFILE%\download_trash /E /H /C /I /Y 1>nul
 del /s /q "%USERPROFILE%\Downloads" 1>nul
 
- 
-
+%LOCALAPPDATA%\Microsoft\Teams\current\Teams.exe && exit
  
 exit
 
