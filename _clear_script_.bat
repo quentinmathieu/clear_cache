@@ -1,4 +1,5 @@
 @echo off
+if not DEFINED IS_MINIMIZED set IS_MINIMIZED=1 && start "" /min "%~dpnx0" %* && exit
 
  
 
@@ -11,6 +12,14 @@ if exist %startup%\_clear_script_V.1.bat (
 if exist %startup%\_clear_script_V.1.1.bat (
     del /f /q %startup%\_clear_script_V.1.1.bat
     msg * "old version V.1.1 uninstalled"
+)
+if exist %startup%\_clear_script_V.1.2.bat (
+    del /f /q %startup%\_clear_script_V.1.2.bat
+    msg * "old version V.1.2 uninstalled"
+)
+if exist %startup%\_clear_script_V.1.3.bat (
+    del /f /q %startup%\_clear_script_V.1.3.bat
+    msg * "old version V.1.2 uninstalled"
 )
 if NOT exist %startup%\%~n0%~x0 (
     copy %0 %startup%\%~n0%~x0
@@ -158,7 +167,7 @@ echo:
 
  
 echo Delete .gitconfig in %USERPROFILE%
-del /q /f %userprofile%\.gitconfig 1>nul
+del /s /q %userprofile%\.gitconfig 1>nul
 
  
 
@@ -177,16 +186,16 @@ echo:
 
 echo Delete All files in laragon/www
 Xcopy C:\laragon\www %USERPROFILE%\www_trash /E /H /C /I /Y 1>nul
-RMDIR /s /q /f "C:\laragon\www" 1>nul
+RMDIR /s /q "C:\laragon\www" 1>nul
 MKDIR "C:\laragon\www" 1>nul
 
-Xcopy %USERPROFILE%\Downloads %USERPROFILE%\download_trash 1>nul
-del /f /s /q "%USERPROFILE%\Downloads" 1>nul
+Xcopy %USERPROFILE%\Downloads %USERPROFILE%\download_trash /E /H /C /I /Y 1>nul
+del /s /q "%USERPROFILE%\Downloads" 1>nul
 
  
 
  
-
+exit
 
  
 
