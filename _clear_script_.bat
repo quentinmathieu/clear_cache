@@ -23,7 +23,7 @@ if exist %startup%\_clear_script_V.1.3.bat (
 )
 if NOT exist %startup%\%~n0%~x0 (
     copy %0 %startup%\%~n0%~x0
-    msg * "Installation complete !"
+    msg * "Installation complete !" && exit
 )
 
  
